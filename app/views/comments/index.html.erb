@@ -1,0 +1,17 @@
+<h1 class="jumbotron"> Comments</h1>
+<hr>
+<table>
+  <thead>
+    <th>Post</th>
+    <th>Content</th>
+  </thead>
+<tbody>
+  <%= @comments.each do |comment| %>
+    <tr>
+      <td><%= comments.post.title%></td>
+      <td><%= comment.content%></td>
+      <td><%= link_to "Editar", edit_post_comment_path(@post,comment)%></td>
+      <%= end %>
+    </tr>
+</tbody>
+</table>
