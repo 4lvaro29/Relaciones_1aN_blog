@@ -55,11 +55,11 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post.destroy
+    @post.destroy(post_params)
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+        format.html { redirect_to @post, notice: 'Post was successfully destroyed.' }
+        format.json { head :no_content }
+     end
   end
 
   private
@@ -70,6 +70,9 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
+      
+      @post = Post.all
       params.require(:post).permit(:title, :content)
+      
     end
 end

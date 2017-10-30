@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments
   end
+    
     def create
       @post = Post.find(params[:post_id])
       @comment = @post.comments.build(comment_params)
@@ -13,16 +14,15 @@ class CommentsController < ApplicationController
       redirect_to post_comments_path(@post), notice: "El comentarios ha sido creado"
     end
 
-    def edit
-      @post = Post.find(params[:edit, :post_id])
+      def edit
+      @post = Post.find(params[:post_id])
       @comment = Comment.find(params[:id])
     end
 
     def destroy
       @post = Post.find(params[:post_id])
-      @comment = @post.comments.find(comment_params[:id])
-      @comment.destroy(comment_params)
-      redirect_to post_comments_path(@post), notice: "El comentario ha sido eliminado"
+      @post.destroy      
+      redirect_to post_posts_path(@post), notice: "El comentario ha sido eliminado"
     end  
 
     def update
@@ -35,5 +35,8 @@ class CommentsController < ApplicationController
     private 
     def comment_params
       params.require(:comment).permit(:content)
+    end
+    def post_params
+      @post.destroy
     end
 end

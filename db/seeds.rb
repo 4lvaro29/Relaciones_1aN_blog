@@ -10,3 +10,9 @@ Post.destroy_all
 Comment.destroy_all
 
 p = Post.create(title: "lorem ipsum")
+
+5.times do 
+
+	Comment.create(name: "Hola")
+	
+end
